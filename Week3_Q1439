@@ -1,0 +1,33 @@
+//다시 공부하기
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc, char **argv) {
+	int count0=0, count1=0;
+  char str[1000001], *str1;
+  scanf("%s", str);
+  str1 = strdup(str);
+  //strdup함수
+  //strcpt(복사)에 메모리할당까지해주는 함수
+  //근데 이걸 해줄 필요가 있나? 정작 사용은 str[i]로 하는데? 찾아기기
+
+
+  for(int i = 0; str[i]; i++) { //str[i]의 값이 있으면(?)
+    if (str[i] == '0') {
+      count0++;
+      for(int j = i; str[j] && str[j] == '0'; j++) //str[j]에 값이 있고, 0이면
+        str[j] = '1';
+    }
+  }
+  for(int i = 0; str1[i]; i++) {
+    if (str1[i] == '1') {
+      count1++;
+      for(int j = i; str1[j] && str1[j] == '1'; j++) //str[j]에 값이 있고, 1이면
+        str1[j] = '0';
+    }
+  }
+
+  //행동 횟수 출력
+      printf("%d\n", count0 <count1 ? count0 : count1);
+  free(str1);
+}
