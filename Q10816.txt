@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+	int N, M;
+	int arrN[500000], arrM[500000];
+	int cnt[500000] = { 0, };
+	scanf("%d", &N); //가지고 있는 카드 갯수 N개
+
+	int i, j;
+	for (i = 0; i < N; i++) {
+		scanf("%d", &arrN[i]); //N크기만큼의 카드번호 배열
+	}
+
+	scanf("%d", &M); //맞출 카드 갯수
+	
+	for (j = 0; j < M; j++) {
+		scanf("%d", &arrM[j]); //맞출 카드번호가 담긴 배열
+	}
+
+	for (j = 0; j < M; j++) {
+		for (i = 0; i < N; i++) {
+			if (arrM[j] == arrN[i]) //찾는게 N에 있으면 카운트
+				cnt[j]++; 
+		}
+	}
+
+	for (i = 0; i < M; i++) {
+		printf("%d ", cnt[i]);
+	}
+}
